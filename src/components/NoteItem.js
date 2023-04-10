@@ -1,6 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import noteContext from '../context/notes/noteContext';
+import './NoteItem.css'
 
 export default function NoteItem(props) {
     const context = useContext(noteContext);
@@ -18,8 +19,8 @@ export default function NoteItem(props) {
                 <div className='card-header d-flex justify-content-between align-items-center' style={{backgroundColor:"#92aad0"}}>
                     <h4 className="card-title text-start">{note.title}</h4>
                     <div className='d-flex justify-content-between align-items-center flex-nowrap'>
-                        <i className="fa-solid fa-pen-to-square" onClick={()=>{updateNote(note)}}></i>
-                        <i className="fa-regular fa-trash-can mx-3" onClick={()=>{deleteNote(note._id);
+                        <i className="noteIcon fa-solid fa-pen-to-square p-2" onClick={()=>{updateNote(note)}}></i>
+                        <i className="noteIcon fa-regular fa-trash-can mx-3 p-2" onClick={()=>{deleteNote(note._id);
                                         props.showAlert("success" , "Note deleted successfully");
                         }} 
                         ></i>
