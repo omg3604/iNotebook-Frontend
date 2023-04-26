@@ -73,25 +73,25 @@ const Account = (props) => {
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
-                        <div className="modal-header">
+                        <div className="modal-header" style={{backgroundColor:"#A5D7E8"}}>
                             <h5 className="modal-title" id="exampleModalLabel">Edit User Details</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
                             <form className='container '>
                                 <div className="form-group d-flex my-3">
-                                    <label htmlFor="ename" className="form-label">Name</label>
+                                    <label htmlFor="ename" className="form-label mx-3">Name</label>
                                     <input type="text" className="form-control" id="ename" name="ename" placeholder="Enter name" onChange={onchange} value={newdata.ename} minLength={2} required />
                                 </div>
                                 <div className="form-group d-flex my-3">
-                                    <label htmlFor="eemail" className="form-label">Email</label>
+                                    <label htmlFor="eemail" className="form-label mx-3">Email</label>
                                     <input type="email" className="form-control" id="eemail" name="eemail" placeholder="Enter Email" onChange={onchange} value={newdata.eemail} required />
                                 </div>
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button onClick={handleClick} type="button" className="btn btn-primary">Save changes</button>
+                            <button ref={refClose} type="button" className="btn actbtncss" data-bs-dismiss="modal">Close</button>
+                            <button onClick={handleClick} type="button" className="btn actbtncss">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -104,8 +104,8 @@ const Account = (props) => {
             <div className="modal fade" id="deleteModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="deleteModalLabel">Deactivate Account</h5>
+                        <div className="modal-header" style={{backgroundColor:"#A5D7E8"}}>
+                            <h4 className="modal-title" id="deleteModalLabel" >Deactivate Account</h4>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
@@ -114,8 +114,8 @@ const Account = (props) => {
 
                         </div>
                         <div className="modal-footer">
-                            <button type="button" ref={drefClose} className="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                            <button onClick={dhandleClick} type="button" className="btn btn-primary">Yes</button>
+                            <button type="button" ref={drefClose} className="btn actbtncss" data-bs-dismiss="modal">No</button>
+                            <button onClick={dhandleClick} type="button" className="btn actbtncss">Yes</button>
                         </div>
                     </div>
                 </div>
@@ -162,7 +162,7 @@ const Account = (props) => {
                         </div>
                     </div>
                     <div className='container d-flex justify-content-center py-3 my-4'>
-                        <button className='btn btn-danger deactbtn' onClick={handleDeactivate}> Deactivate Account</button>
+                        <button className='btn actbtncss' onClick={handleDeactivate}> <h6>Deactivate Account</h6></button>
                     </div>
                 </div>
             </div>

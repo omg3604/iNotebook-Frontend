@@ -5,6 +5,9 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import "./AddNote.css"
 
 export default function Addnote(props) {
+
+    const [lang, setlang] = useState("en-IN");
+
     const context = useContext(noteContext);
     const { addNote } = context;
 
@@ -35,6 +38,10 @@ export default function Addnote(props) {
         }
     }
 
+    const onlangChange = (e) => {
+        setlang(e.target.value);
+    }
+
     const capitalizeFirstLetter = (str) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
@@ -55,7 +62,7 @@ export default function Addnote(props) {
     const listenContinuously = () => {
         SpeechRecognition.startListening({
             continuous: true,
-            language: 'en-GB',
+            language: lang,
         });
     };
 
@@ -67,7 +74,7 @@ export default function Addnote(props) {
 
     return (
         <div>
-            <div className="container my-4">
+            <div className="container my-5">
                 <h2 style={{color: "#19376D"}}>Add a Note</h2>
                 <hr/>
                 <form id="contactForm" data-sb-form-api-token="API_TOKEN" className='container'>
@@ -79,16 +86,27 @@ export default function Addnote(props) {
                     </div>
 
                     <div className="mb-3">
-                        <div className='d-flex justify-content-between align-items-center'>
+                        <div className='d-flex justify-content-between align-items-center flex-wrap'>
                             <label className="form-label h5" htmlFor="description">Description</label>
                             <div className='d-flex align-items-center'>
                                 {listening && <i class="fa-solid fa-microphone fa-fade fa-xl" style={{color: "#bf1212"}}></i>}
                                 {listening && <p className='h5 mx-2 mt-2'>listening....</p>}
                             </div>
                             <div className='d-flex justify-content-between align-items-center'>
-                                <p className='mt-3'><strong>Mic : </strong></p>
-                                <i className="fa-solid fa-circle-play fa-2xl  mx-2 my-2 micicon" onClick={listenContinuously} style={{color: "#3B71CA"}}></i>
-                                <i className="fa-solid fa-circle-stop fa-2xl  mx-2 my-2 micicon" onClick={stopListen} style={{color: "#DC4C64"}}></i>
+                                    <p className='my-0 mb-1'><strong>Select language : </strong> </p>
+                                    <select className="select me-5 rounded px-2" style={{ backgroundColor: "#19376D" ,color:"white" }} onChange={onlangChange}>
+                                        <option value="en-IN">English-IND</option>
+                                        <option value="en-US">English-US</option>                                        
+                                        <option value="hi-IN">Hindi</option>
+                                        <option value="fr-FR">French</option>
+                                        <option value="fa-IR">Farsi</option>    
+                                        <option value="it-IT">Italian</option>    
+                                    </select>
+                                </div>
+                            <div className='d-flex justify-content-between align-items-center'>
+                                    <p className='mt-3'><strong>Mic : </strong></p>
+                                    <i className="fa-solid fa-circle-play fa-2xl  mx-2 my-2 micicon" onClick={listenContinuously} style={{color: "#3B71CA"}}></i>
+                                    <i className="fa-solid fa-circle-stop fa-2xl  mx-2 my-2 micicon" onClick={stopListen} style={{color: "#DC4C64"}}></i>
                             </div>
                         </div>
                         <input className="form-control" id="description" type="text" name="description" placeholder="description" style={{height: "5rem"}} data-sb-validations="required" value={note.description || transcript} onChange={onchange}></input>

@@ -6,6 +6,7 @@ import userContext from '../context/user/userContext';
 import AddNote from './AddNote';
 import NoteItem from './NoteItem';
 import Spinner from './Spinner';
+import './Notes.css'
 
 export default function Notes(props) {
 
@@ -68,7 +69,7 @@ export default function Notes(props) {
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
-                        <div className="modal-header">
+                        <div className="modal-header" style={{backgroundColor: "#A5D7E8"}}>
                             <h5 className="modal-title" id="exampleModalLabel">Edit Note</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -88,9 +89,9 @@ export default function Notes(props) {
                                 </div>
                             </form>
                         </div>
-                        <div className="modal-footer">
-                            <button ref={refClose} type="button" className='btn btn-secondary btn-rounded' style={{ backgroundColor: "#92aad0", borderColor: "#92aad0" }} data-bs-dismiss="modal">Close</button>
-                            <button onClick={handleClick} type="button" className='btn btn-primary btn-rounded' style={{ backgroundColor: "#92aad0", borderColor: "#92aad0" }}>Save changes</button>
+                        <div className="modal-footer" >
+                            <button ref={refClose} type="button" className='btn btn-rounded editbtncss' data-bs-dismiss="modal">Close</button>
+                            <button onClick={handleClick} type="button" className='btn btn-rounded editbtncss'>Save changes</button>
                         </div>
                     </div>
                 </div>

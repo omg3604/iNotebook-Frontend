@@ -39,7 +39,7 @@ const NavBar = (props) => {
                             </li>
                         </ul>
                         {!localStorage.getItem('token') ?
-                            <form className="d-flex">
+                            <form className="d-flex ">
                                 <Link className='btn btn-primary mx-2 btn-rounded navbtn' style={{backgroundColor: "#19376D" , borderColor: "#19376D"}} to="/Login" role='button'> Login </Link>
                                 <Link className='btn btn-primary mx-2 btn-rounded navbtn' style={{backgroundColor: "#19376D" , borderColor: "#19376D"}} to="/Signup" role='button'> Signup </Link>
                             </form>
