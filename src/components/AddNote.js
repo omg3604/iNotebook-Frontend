@@ -12,10 +12,18 @@ export default function Addnote(props) {
 
     const handleClick = (e) => {
         e.preventDefault();
-        addNote(note.title, note.description , capitalizeFirstLetter(note.tag));
-        props.showAlert("success", "Note added Successfully!.")
-        setNote({ title: "", description: "", tag: "" });
-        resetTranscript();    
+        if(note.title.length<5){
+            props.showAlert("warning" , " \"Title\" must be more than 5 characters long!")
+        }
+        else if(note.description.length<5){
+            props.showAlert("warning" , " \"Description\" must be more than 5 characters long!")        
+        }
+        else{
+            addNote(note.title, note.description , capitalizeFirstLetter(note.tag));
+            props.showAlert("success", "Note added Successfully!.")
+            setNote({ title: "", description: "", tag: "" });
+            resetTranscript();
+        }    
     }
 
     const onchange = (e) => {
@@ -93,7 +101,7 @@ export default function Addnote(props) {
                     </div>
 
                     <div className="d-grid">
-                        <button disabled={note.title.length < 5 || note.description.length < 5} className="btn btn-lg mx-2 btn-rounded addbtncss" style={{backgroundColor:"#19376D" , color:"white"}} id="submitButton" type="submit" onClick={handleClick}>Add Note</button>
+                        <button className="btn btn-lg mx-2 btn-rounded addbtncss" style={{backgroundColor:"#19376D" , color:"white"}} id="submitButton" type="submit" onClick={handleClick}>Add Note</button>
                     </div>
 
                 </form>
