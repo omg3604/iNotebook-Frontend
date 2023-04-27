@@ -94,7 +94,7 @@ export default function Addnote(props) {
                             </div>
                             <div className='d-flex justify-content-between align-items-center'>
                                     <p className='my-0 mb-1'><strong>Select language : </strong> </p>
-                                    <select className="select me-5 rounded px-2" style={{ backgroundColor: "#19376D" ,color:"white" }} onChange={onlangChange}>
+                                    <select className="select me-5 ms-1 rounded px-2" style={{ backgroundColor: "#19376D" ,color:"white" }} onChange={onlangChange}>
                                         <option value="en-IN">English-IND</option>
                                         <option value="en-US">English-US</option>                                        
                                         <option value="hi-IN">Hindi</option>
