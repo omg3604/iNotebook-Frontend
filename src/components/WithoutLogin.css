@@ -37,3 +37,38 @@
 i{
     color: #0B2447;
 }
+
+.firstSec{
+    background-image: url('../HomeDesktop.png');
+  
+    /* Image is centered vertically and horizontally at all times */
+    background-position: center center;
+    
+    /* Image doesn't repeat */
+    background-repeat: no-repeat;
+    
+    /* This is what makes the background image rescale based on its container's size */
+    background-size: cover;
+}
+
+.features{
+    background-color: #0B2447;
+    padding : 5rem;
+}
+
+.carousel-item{
+    margin-left : 18rem;
+}
+
+@media only screen and (max-width: 767px) {
+    .firstSec {
+      /* The file size of this background image is 93% smaller
+       * to improve page load speed on mobile internet connections */
+      background-image: url('../HomeMobile.png');
+      padding: 0px;
+    }
+
+    .carousel-item{
+        margin-left : 3rem;
+    }
+}

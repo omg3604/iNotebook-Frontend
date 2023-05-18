@@ -31,11 +31,17 @@ const NavBar = (props) => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
+                            <li className="nav-item mx-2">
                                 <Link className={`nav-link ${location.pathname === "/" ? "active" : ""} linkcss`} aria-current="page" to="/">Home</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""} linkcss`} to="/about">About</Link>
+                            <li className="nav-item mx-2">
+                                <Link className={`nav-link ${location.pathname === "/" ? "active" : ""} linkcss`} to="/">About Us</Link>
+                            </li>
+                            <li className="nav-item mx-2">
+                                <Link className={`nav-link ${location.pathname === "/" ? "active" : ""} linkcss`} to="/">Features</Link>
+                            </li>
+                            <li className="nav-item mx-2">
+                                <Link className={`nav-link ${location.pathname === "/contact" ? "active" : ""} linkcss`} to="/contact">Contact Us</Link>
                             </li>
                         </ul>
                         {!localStorage.getItem('token') ?

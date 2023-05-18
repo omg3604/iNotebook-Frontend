@@ -12,7 +12,7 @@ const Home = (props) => {
     }
   }, [])
   return (
-    <div className='container my-4'>
+    <div>
       {/* <Spinner/> */}
       {!isLogin && <WithoutLogin></WithoutLogin>}
       {isLogin && <Notes showAlert={props.showAlert}></Notes>}

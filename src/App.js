@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
-import About from './components/About';
+import Contact from './components/Contact';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Account from './components/Account';
@@ -36,11 +36,13 @@ function App() {
         <Router>
           <div>
             <NavBar showAlert={showAlert}></NavBar>
-            <Alert alert={alert} ></Alert>
-            <div className='container'>
+            <div>
+              <Alert alert={alert} ></Alert>
+            </div>
+            <div>
               <Routes>
                 <Route exact path='/' element={<Home showAlert={showAlert}></Home>}></Route>
-                <Route exact path='/about' element={<About></About>}></Route>
+                <Route exact path='/contact' element={<Contact></Contact>}></Route>
                 <Route exact path='/Login' element={<Login showAlert={showAlert}></Login>}></Route>
                 <Route exact path='/Signup' element={<Signup showAlert={showAlert}></Signup>}></Route>
                 <Route exact path='/Account' element={<Account showAlert={showAlert}></Account>}></Route>

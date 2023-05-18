@@ -3,7 +3,7 @@ import userContext from '../context/user/userContext';
 import { useContext, useEffect, useRef, useState} from 'react';
 
 
-const About = () => {
+const Contact = () => {
 
   // For maintaining the user data on the navbar upon reload also.
   const Ucontext = useContext(userContext);
@@ -14,9 +14,9 @@ const About = () => {
 
   return (
     <div>
-      this is About page.
+      this is Contact page.
     </div>
   )
 }
 
-export default About;
+export default Contact;
