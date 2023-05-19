@@ -19,7 +19,7 @@
 
 .rotate {
     height: 170px;
-    width: 340px;
+    width: 50%;
     background: #b5ddeb;
     border-radius: 20px;
     margin: 10px;
@@ -69,6 +69,10 @@ i{
     }
 
     .carousel-item{
-        margin-left : 3rem;
+        margin-left : 15px;
+    }
+
+    .rotate{
+        width: 75%;
     }
 }

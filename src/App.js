@@ -7,6 +7,7 @@ import Contact from './components/Contact';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Account from './components/Account';
+import About from './components/About';
 import {
   BrowserRouter as Router,
   Routes,
@@ -43,6 +44,7 @@ function App() {
               <Routes>
                 <Route exact path='/' element={<Home showAlert={showAlert}></Home>}></Route>
                 <Route exact path='/contact' element={<Contact></Contact>}></Route>
+                <Route exact path='/about' element={<About></About>}></Route>
                 <Route exact path='/Login' element={<Login showAlert={showAlert}></Login>}></Route>
                 <Route exact path='/Signup' element={<Signup showAlert={showAlert}></Signup>}></Route>
                 <Route exact path='/Account' element={<Account showAlert={showAlert}></Account>}></Route>
