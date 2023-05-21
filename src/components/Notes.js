@@ -28,19 +28,20 @@ export default function Notes(props) {
         getNotes();
     }, [])
 
-    const ref = useRef(null);
-    const refClose = useRef(null);
+    // Editing the note
+    const editref = useRef(null);
+    const editrefClose = useRef(null);
     const [note, setNote] = useState({ id: "", etitle: "", edescription: "", etag: "default" });
 
     const updateNote = (currentNote) => {
-        ref.current.click();    // for opening the modal on clicking edit icon
+        editref.current.click();    // for opening the modal on clicking edit icon
         setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag });   // for populating the form with current note values
     }
 
     const handleClick = (e) => {
         editNote(note.id, note.etitle, note.edescription, note.etag);
         //console.log("Updating the note...", note);
-        refClose.current.click();   // for closing the modal after clicking save changes button
+        editrefClose.current.click();   // for closing the modal after clicking save changes button
         props.showAlert("success", "Note updated successfully");
     }
 
@@ -58,11 +59,62 @@ export default function Notes(props) {
         console.log(e.target.value);
     }
 
+    // Sharing Note to other users
+
+    const shareref = useRef(null);
+    const sharerefClose = useRef(null);
+    const [snote , setsnote] = useState({id : "" , stitle: "" , sdescription: "" , stag : "default"});
+    const [usermail ,setusermail] = useState("");
+
+    const shareNote = (note) => {
+        shareref.current.click();
+        setsnote({id : note._id ,stitle : note.title , sdescription: note.description , stag : note.tag});
+    }
+
+    const onsharechange = (e) => {
+        setusermail(e.target.value);
+    }
+
+    const onshareclick = (e) => {
+        console.log(usermail);
+        console.log(snote);
+        sharerefClose.current.click();
+    }
+
     // if (noteLoad) return <Spinner/>;
     return (
         <>
             <AddNote showAlert={props.showAlert} ></AddNote>
-            <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+            <button ref={shareref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Launch demo modal
+            </button>
+
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header" style={{backgroundColor: "#A5D7E8"}}>
+                            <h5 className="modal-title" id="exampleModalLabel">Edit Note</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <form className='container '>
+                                <div className="form-group d-flex my-3">
+                                    <label htmlFor="etitle" className="form-label">Receiver's Email</label>
+                                    <input type="text" className="form-control" id="etitle" name="etitle" placeholder="Enter email" onChange={onsharechange} value={usermail} minLength={5} required />
+                                </div>
+                                <p>The email must be a valid email of inotebook user.</p>
+                            </form>
+                        </div>
+                        <div className="modal-footer" >
+                            <button ref={sharerefClose} type="button" className='btn btn-rounded editbtncss' data-bs-dismiss="modal">Close</button>
+                            <button onClick={onshareclick} type="button" className='btn btn-rounded editbtncss'>Share</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button ref={editref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button>
 
@@ -89,8 +141,10 @@ export default function Notes(props) {
                                 </div>
                             </form>
                         </div>
+
+                        
                         <div className="modal-footer" >
-                            <button ref={refClose} type="button" className='btn btn-rounded editbtncss' data-bs-dismiss="modal">Close</button>
+                            <button ref={editrefClose} type="button" className='btn btn-rounded editbtncss' data-bs-dismiss="modal">Close</button>
                             <button onClick={handleClick} type="button" className='btn btn-rounded editbtncss'>Save changes</button>
                         </div>
                     </div>
@@ -113,7 +167,7 @@ export default function Notes(props) {
                 {noteLoad && <Spinner/>}
                 {!noteLoad &&  <h5>{notes.length === 0 && 'No saved notes found.'}</h5>}
                 {!noteLoad && notes.map((note) => {
-                    return <NoteItem key={note._id} updateNote={updateNote} note={note} showAlert={props.showAlert}></NoteItem>;
+                    return <NoteItem key={note._id} updateNote={updateNote} shareNote={shareNote} note={note} showAlert={props.showAlert}></NoteItem>;
                 }
                 )}
             </div>

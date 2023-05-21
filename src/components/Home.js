@@ -15,7 +15,7 @@ const Home = (props) => {
     <div>
       {/* <Spinner/> */}
       {!isLogin && <WithoutLogin></WithoutLogin>}
-      {isLogin && <Notes showAlert={props.showAlert}></Notes>}
+      <div className='container'>{isLogin && <Notes showAlert={props.showAlert}></Notes>}</div>
     </div>
   )
 }

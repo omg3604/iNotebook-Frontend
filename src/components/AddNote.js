@@ -93,7 +93,7 @@ export default function Addnote(props) {
                                 {listening && <p className='h5 mx-2 mt-2'>listening....</p>}
                             </div>
                             <div className='d-flex justify-content-between align-items-center'>
-                                    <p className='my-0 mb-1'><strong>Select language : </strong> </p>
+                                    <p className='my-0 mb-1'>Select language : </p>
                                     <select className="select me-5 ms-1 rounded px-2" style={{ backgroundColor: "#19376D" ,color:"white" }} onChange={onlangChange}>
                                         <option value="en-IN">English-IND</option>
                                         <option value="en-US">English-US</option>                                        
@@ -104,7 +104,7 @@ export default function Addnote(props) {
                                     </select>
                                 </div>
                             <div className='d-flex justify-content-between align-items-center'>
-                                    <p className='mt-3'><strong>Mic : </strong></p>
+                                    <p className='mt-3'>Mic :</p>
                                     <i className="fa-solid fa-circle-play fa-2xl  mx-2 my-2 micicon" onClick={listenContinuously} style={{color: "#3B71CA"}}></i>
                                     <i className="fa-solid fa-circle-stop fa-2xl  mx-2 my-2 micicon" onClick={stopListen} style={{color: "#DC4C64"}}></i>
                             </div>
