@@ -9,9 +9,13 @@ export default function NoteItem(props) {
 
     const { note, updateNote , shareNote} = props;
 
-    let day = note.date.substr(8, 2);
-    let month = note.date.substr(5, 2);
-    let year = note.date.substr(0, 4);
+    let addday = note.date.substr(8, 2);
+    let addmonth = note.date.substr(5, 2);
+    let addyear = note.date.substr(0, 4);
+
+    let expday = note.expdate.substr(8, 2);
+    let expmonth = note.expdate.substr(5, 2);
+    let expyear = note.expdate.substr(0, 4);
 
     return (
         <div className='col-md-3'>
@@ -49,7 +53,10 @@ export default function NoteItem(props) {
 
                 </div>
                 <div className="card-footer text-muted">
-                    {day} - {month} - {year}
+                    <strong>Creation </strong>: {addday} - {addmonth} - {addyear}
+                </div>
+                <div className="card-footer text-muted">
+                <strong>Expiry </strong>: {expday} - {expmonth} - {expyear}
                 </div>
             </div>
         </div>

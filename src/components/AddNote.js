@@ -11,29 +11,32 @@ export default function Addnote(props) {
     const context = useContext(noteContext);
     const { addNote } = context;
 
-    const [note, setNote] = useState({ title: "", description: "", tag: "" });
+    const [note, setNote] = useState({ title: "", description: "", tag: "", expdate: "" });
 
     const handleClick = (e) => {
         e.preventDefault();
-        if(note.title.length<5){
-            props.showAlert("warning" , " \"Title\" must be more than 5 characters long!")
+        if (note.title.length < 5) {
+            props.showAlert("warning", " \"Title\" must be more than 5 characters long!")
         }
-        else if(note.description.length<5){
-            props.showAlert("warning" , " \"Description\" must be more than 5 characters long!")        
+        else if (note.description.length < 5) {
+            props.showAlert("warning", " \"Description\" must be more than 5 characters long!")
         }
-        else{
-            addNote(note.title, note.description , capitalizeFirstLetter(note.tag));
+        else if (note.expdate.length < 5) {
+            props.showAlert("warning", " \"Expiry Date\" can not be left empty!")
+        }
+        else {
+            addNote(note.title, note.description, capitalizeFirstLetter(note.tag), note.expdate);
             props.showAlert("success", "Note added Successfully!.")
-            setNote({ title: "", description: "", tag: "" });
+            setNote({ title: "", description: "", tag: "", expdate: "" });
             resetTranscript();
-        }    
+        }
     }
 
     const onchange = (e) => {
-        if(listening){
-            setNote({ ...note , description : transcript});
+        if (listening) {
+            setNote({ ...note, description: transcript });
         }
-        else{ 
+        else {
             setNote({ ...note, [e.target.name]: e.target.value });
         }
     }
@@ -54,7 +57,7 @@ export default function Addnote(props) {
         browserSupportsSpeechRecognition
     } = useSpeechRecognition();
 
-    
+
     if (!browserSupportsSpeechRecognition) {
         return <span>Browser doesn't support speech recognition.</span>;
     }
@@ -68,58 +71,72 @@ export default function Addnote(props) {
 
     const stopListen = () => {
         SpeechRecognition.stopListening();
-        setNote({ ...note , description : transcript });
+        setNote({ ...note, description: transcript });
         resetTranscript();
     }
 
     return (
         <div>
             <div className="container my-5">
-                <h2 style={{color: "#19376D"}}>Add a Note</h2>
-                <hr/>
+                <h2 style={{ color: "#19376D" }}>Add a Note</h2>
+                <hr />
                 <form id="contactForm" data-sb-form-api-token="API_TOKEN" className='container'>
 
-                    <div className="mb-3">
-                        <label className="form-label h5" htmlFor="title">Title</label>
-                        <input className="form-control" id="title" type="text" name="title" placeholder="title" data-sb-validations="required" value={note.title} onChange={onchange}/>
+                    <div className="mb-3 d-flex justify-content-between">
+                        <label className="form-label h5" htmlFor="title">Title : </label>
+                        <input className="form-control w-50" id="title" type="text" name="title" placeholder="title" data-sb-validations="required" value={note.title} onChange={onchange} />
                         <div className="invalid-feedback" data-sb-feedback="title:required">Title is required.</div>
                     </div>
 
-                    <div className="mb-3">
-                        <div className='d-flex justify-content-between align-items-center flex-wrap'>
-                            <label className="form-label h5" htmlFor="description">Description</label>
-                            <div className='d-flex align-items-center'>
-                                {listening && <i class="fa-solid fa-microphone fa-fade fa-xl" style={{color: "#bf1212"}}></i>}
-                                {listening && <p className='h5 mx-2 mt-2'>listening....</p>}
+                    <div className="mb-3 d-flex justify-content-between">
+                        <div className='d-flex flex-column'>
+                            <label className="form-label h5" htmlFor="description">Description : </label>
+                            <div className='d-flex justify-content-between align-items-center'>
+                                <p className='my-0 mb-1'>Select language : </p>
+                                <select className="select me-5 ms-1 rounded px-2" style={{ backgroundColor: "#19376D", color: "white" }} onChange={onlangChange}>
+                                    <option value="en-IN">English-IND</option>
+                                    <option value="en-US">English-US</option>
+                                    <option value="hi-IN">Hindi</option>
+                                    <option value="fr-FR">French</option>
+                                    <option value="fa-IR">Farsi</option>
+                                    <option value="it-IT">Italian</option>
+                                </select>
                             </div>
-                            <div className='d-flex justify-content-between align-items-center'>
-                                    <p className='my-0 mb-1'>Select language : </p>
-                                    <select className="select me-5 ms-1 rounded px-2" style={{ backgroundColor: "#19376D" ,color:"white" }} onChange={onlangChange}>
-                                        <option value="en-IN">English-IND</option>
-                                        <option value="en-US">English-US</option>                                        
-                                        <option value="hi-IN">Hindi</option>
-                                        <option value="fr-FR">French</option>
-                                        <option value="fa-IR">Farsi</option>    
-                                        <option value="it-IT">Italian</option>    
-                                    </select>
+                            <div className='d-flex align-items-center'>
+                                <p className='mt-3'>Mic :</p>
+                                <i className="fa-solid fa-circle-play fa-2xl  mx-2 my-2 micicon" onClick={listenContinuously} style={{ color: "#3B71CA" }}></i>
+                                <i className="fa-solid fa-circle-stop fa-2xl  mx-2 my-2 micicon" onClick={stopListen} style={{ color: "#DC4C64" }}></i>
+                                <div className='d-flex align-items-center'>
+                                    {listening && <i class="fa-solid fa-microphone fa-fade fa-xl" style={{ color: "#bf1212" }}></i>}
+                                    {listening && <p className='h5 mx-2 mt-2'>listening....</p>}
                                 </div>
-                            <div className='d-flex justify-content-between align-items-center'>
-                                    <p className='mt-3'>Mic :</p>
-                                    <i className="fa-solid fa-circle-play fa-2xl  mx-2 my-2 micicon" onClick={listenContinuously} style={{color: "#3B71CA"}}></i>
-                                    <i className="fa-solid fa-circle-stop fa-2xl  mx-2 my-2 micicon" onClick={stopListen} style={{color: "#DC4C64"}}></i>
                             </div>
                         </div>
-                        <input className="form-control" id="description" type="text" name="description" placeholder="description" style={{height: "5rem"}} data-sb-validations="required" value={note.description || transcript} onChange={onchange}></input>
+                        <input className="form-control w-50" id="description" type="text" name="description" placeholder="description" style={{ height: "5rem" }} data-sb-validations="required" value={note.description || transcript} onChange={onchange}></input>
                         <div className="invalid-feedback" data-sb-feedback="description:required">Description is required.</div>
                     </div>
 
                     <div className="mb-3">
-                        <label className="form-label h5" htmlFor="tag">Tag</label>
-                        <input className="form-control" id="tag" type="text" name="tag" placeholder="tag" value={note.tag} onChange={onchange}/>
+                        <div className='d-flex justify-content-between align-items-center'>
+                            <p className='form-label h5'>Select Tag : </p>
+                            <select id="tag" className="select w-50 p-2 rounded" style={{ borderColor: "grey" }} name="tag" onChange={onchange}>
+                                <option value="personal">Personal</option>
+                                <option value="general">General</option>
+                                <option value="business">Business</option>
+                                <option value="routine">Routine</option>
+                                <option value="routine">Default</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div className="d-grid">
-                        <button className="btn btn-lg mx-2 btn-rounded addbtncss" style={{backgroundColor:"#19376D" , color:"white"}} id="submitButton" type="submit" onClick={handleClick}>Add Note</button>
+                    <div className="mb-3 d-flex justify-content-between">
+                        <label className="form-label h5" htmlFor="expdate">Expiry Date : </label>
+                        <input className="form-control w-50" id="expdate" type="date" name="expdate" placeholder="" value={note.expdate} onChange={onchange} />
+                        <div className="invalid-feedback" data-sb-feedback="expdate:required">Expiry Date is required.</div>
+                    </div>
+
+                    <div className="d-grid my-4">
+                        <button className="btn btn-lg mx-2 btn-rounded addbtncss" style={{ backgroundColor: "#19376D", color: "white" }} id="submitButton" type="submit" onClick={handleClick}>Add Note</button>
                     </div>
 
                 </form>

@@ -28,17 +28,18 @@ const NoteState = (props) => {
     }
 
     // Add a note
-    const addNote = async (title, description, tag) => {
+    const addNote = async (title, description, tag , expdate) => {
         //console.log("adding a new note!");
         // API Call
         setnoteLoad(true);
         const response = await fetch(`${host}/api/notes/addNotes`, {
+            //mode: 'no-cors',
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",
                 "auth-token": localStorage.getItem('token'),
             },
-            body: JSON.stringify({title , description , tag}), // body data type must match "Content-Type" header
+            body: JSON.stringify({title , description , tag , expdate}), // body data type must match "Content-Type" header
         });
         //console.log(JSON.stringify({title , description , tag}));
         const newnote = await response.json();
@@ -69,7 +70,7 @@ const NoteState = (props) => {
     }
 
     // Edit a note
-    const editNote = async (id, title, description, tag) => {
+    const editNote = async (id, title, description, tag , expdate) => {
         // API Call
         setnoteLoad(true);
         const response = await fetch(`${host}/api/notes/updateNote/${id}`, {
@@ -78,10 +79,10 @@ const NoteState = (props) => {
                 "Content-Type": "application/json",
                 "auth-token": localStorage.getItem('token'),
             },
-            body: JSON.stringify({title , description , tag}), // body data type must match "Content-Type" header
+            body: JSON.stringify({title , description , tag , expdate}), // body data type must match "Content-Type" header
         });
         const txt = await response.text(); // parses JSON response into native JavaScript object
-        console.log(txt);
+        //console.log(txt);
 
         for (let index = 0; index < notes.length; index++) {
             const element = notes[index];
@@ -89,6 +90,7 @@ const NoteState = (props) => {
                 notes[index].title = title;
                 notes[index].description = description;
                 notes[index].tag = tag;
+                notes[index].expdate = expdate;
                 break;
             }
         }
