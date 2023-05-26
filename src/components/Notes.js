@@ -131,10 +131,10 @@ export default function Notes(props) {
                                         <label htmlFor="etag" className="form-label">Tag</label>
                                         <input type="text" className="form-control w-50" id="etag" name="etag" placeholder="Note tag" onChange={onchange} value={note.etag} />
                                     </div>
-                                    <div className="form-group d-flex my-3 justify-content-around">
+                                    {/* <div className="form-group d-flex my-3 justify-content-around">
                                         <label htmlFor="eexpdate" className="form-label">Expiry Date</label>
                                         <input type="date" className="form-control w-50" id="eexpdate" name="eexpdate" placeholder="" onChange={onchange} value={note.eexpdate} />
-                                    </div>
+                                    </div> */}
                                 </form>
                             </div>
                         }
