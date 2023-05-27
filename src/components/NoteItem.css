@@ -22,3 +22,7 @@
     color:rgba(0, 0, 0, 0.5);
 }
 
+.timer{
+    margin-top : 2px;
+    z-index: 2;
+}

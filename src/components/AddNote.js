@@ -104,8 +104,8 @@ export default function Addnote(props) {
                             </div>
                             <div className='d-flex align-items-center'>
                                 <p className='mt-3'>Mic :</p>
-                                <i className="fa-solid fa-circle-play fa-2xl  mx-2 my-2 micicon" onClick={listenContinuously} style={{ color: "#3B71CA" }}></i>
-                                <i className="fa-solid fa-circle-stop fa-2xl  mx-2 my-2 micicon" onClick={stopListen} style={{ color: "#DC4C64" }}></i>
+                                <i className="fa-solid fa-circle-play fa-xl  mx-2 my-2 micicon" onClick={listenContinuously} style={{ color: "#3B71CA" }}></i>
+                                <i className="fa-solid fa-circle-stop fa-xl  mx-2 my-2 micicon" onClick={stopListen} style={{ color: "#DC4C64" }}></i>
                                 <div className='d-flex align-items-center'>
                                     {listening && <i class="fa-solid fa-microphone fa-fade fa-xl" style={{ color: "#bf1212" }}></i>}
                                     {listening && <p className='h5 mx-2 mt-2'>listening....</p>}

@@ -7,7 +7,7 @@ export default function NoteItem(props) {
     const context = useContext(noteContext);
     const { deleteNote } = context;
 
-    const { note, updateNote , shareNote} = props;
+    const { note, updateNote, shareNote } = props;
 
     let addday = note.date.substr(8, 2);
     let addmonth = note.date.substr(5, 2);
@@ -17,9 +17,25 @@ export default function NoteItem(props) {
     let expmonth = note.expdate.substr(5, 2);
     let expyear = note.expdate.substr(0, 4);
 
+    const date = new Date();
+    let curryear = date.getFullYear();
+    let currmonth = date.getMonth() + 1;
+    let currday = date.getDate();
+
+    let flag = false;
+    if(expyear < curryear){
+        flag = true;
+    }
+    else if(expyear == curryear && expmonth < currmonth){
+        flag = true;
+    }
+    else if(expmonth == currmonth && expday < currday){
+        flag = true;
+    }
+
     return (
         <div className='col-md-3'>
-            <div className=" card notecard text-center my-3">
+            <div className=" card notecard text-center my-3" style={{backgroundColor: flag==true ? "#ffb8b8" : "white"}}>
                 <div className='card-header d-flex justify-content-between align-items-center rounded' style={{ backgroundColor: "#A5D7E8" }}>
                     <h5 className="card-title text-start" >{note.title}</h5>
                     <div className="dropdown">
@@ -48,15 +64,17 @@ export default function NoteItem(props) {
                     </div>
                 </div>
                 <div className="card-body" style={{ backgroundColor: "white" }}>
-
                     <p className="card-text">{note.description}</p>
-
                 </div>
                 <div className="card-footer text-muted">
                     <strong>Creation </strong>: {addday} - {addmonth} - {addyear}
                 </div>
                 <div className="card-footer text-muted">
-                <strong>Expiry </strong>: {expday} - {expmonth} - {expyear}
+                    <strong>Expiry </strong>: {expday} - {expmonth} - {expyear}
+                </div>
+                <div className="card-footer text-muted">
+                    {(currmonth == expmonth && curryear == expyear && (expday - currday) <= 7 && (expday - currday >0)) && <div className="timer mb-2" style={{ color: "#c03535" }}><strong> {expday - currday}d </strong><i className="fa-sharp fa-solid fa-clock fa-xl" style={{ color: "#c03535" }}> </i></div>}
+                    {(currmonth == expmonth && curryear == expyear && (expday - currday <=0)) && <div className="timer mb-2" style={{ color: "#c03535" }}><i class="fa-sharp fa-solid fa-circle-xmark" style={{ color: "#c03535" }}></i><strong> expired </strong></div>}
                 </div>
             </div>
         </div>
