@@ -23,20 +23,20 @@ export default function NoteItem(props) {
     let currday = date.getDate();
 
     let flag = false;
-    if(expyear < curryear){
+    if (expyear < curryear) {
         flag = true;
     }
-    else if(expyear == curryear && expmonth < currmonth){
+    else if (expyear == curryear && expmonth < currmonth) {
         flag = true;
     }
-    else if(expmonth == currmonth && expday < currday){
+    else if (expmonth == currmonth && expday < currday) {
         flag = true;
     }
 
     return (
         <div className='col-md-3'>
-            <div className=" card notecard text-center my-3" style={{backgroundColor: flag==true ? "#ffb8b8" : "white"}}>
-                <div className='card-header d-flex justify-content-between align-items-center rounded' style={{ backgroundColor: "#A5D7E8" }}>
+            <div className=" card notecard text-center my-3">
+                <div className='card-header d-flex justify-content-between align-items-center rounded' style={{ backgroundColor: flag == true ? "#ffb8b8" : "#A5D7E8" }}>
                     <h5 className="card-title text-start" >{note.title}</h5>
                     <div className="dropdown">
                         <a
@@ -73,8 +73,22 @@ export default function NoteItem(props) {
                     <strong>Expiry </strong>: {expday} - {expmonth} - {expyear}
                 </div>
                 <div className="card-footer text-muted">
-                    {(currmonth == expmonth && curryear == expyear && (expday - currday) <= 7 && (expday - currday >0)) && <div className="timer mb-2" style={{ color: "#c03535" }}><strong> {expday - currday}d </strong><i className="fa-sharp fa-solid fa-clock fa-xl" style={{ color: "#c03535" }}> </i></div>}
-                    {(currmonth == expmonth && curryear == expyear && (expday - currday <=0)) && <div className="timer mb-2" style={{ color: "#c03535" }}><i class="fa-sharp fa-solid fa-circle-xmark" style={{ color: "#c03535" }}></i><strong> expired </strong></div>}
+                    {(currmonth == expmonth &&
+                        curryear == expyear &&
+                        (expday - currday) <= 7 &&
+                        (expday - currday > 0)) &&
+                        <div className="timer mb-2" style={{ color: "#c03535" }}><strong> {expday - currday}d </strong>
+                            <i className="fa-sharp fa-solid fa-clock fa-xl" style={{ color: "#c03535" }}> </i>
+                        </div>
+                    }
+                    {(currmonth == expmonth &&
+                        curryear == expyear &&
+                        (expday - currday <= 0)) &&
+                        <div className="timer mb-2" style={{ color: "#c03535" }}>
+                            <i className="fa-sharp fa-solid fa-circle-xmark fa-xl" style={{ color: "#c03535" }}> </i><strong>
+                                &nbsp; Expired </strong>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

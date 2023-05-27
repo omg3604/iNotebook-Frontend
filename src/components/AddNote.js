@@ -88,10 +88,10 @@ export default function Addnote(props) {
                         <div className="invalid-feedback" data-sb-feedback="title:required">Title is required.</div>
                     </div>
 
-                    <div className="mb-3 d-flex justify-content-between">
+                    <div className="mb-3 d-flex justify-content-between flex-wrap">
                         <div className='d-flex flex-column'>
                             <label className="form-label h5" htmlFor="description">Description : </label>
-                            <div className='d-flex justify-content-between align-items-center'>
+                            <div className='d-flex justify-content-between align-items-center flex-wrap'>
                                 <p className='my-0 mb-1'>Select language : </p>
                                 <select className="select me-5 ms-1 rounded px-2" style={{ backgroundColor: "#19376D", color: "white" }} onChange={onlangChange}>
                                     <option value="en-IN">English-IND</option>
@@ -107,13 +107,13 @@ export default function Addnote(props) {
                                 <i className="fa-solid fa-circle-play fa-xl  mx-2 my-2 micicon" onClick={listenContinuously} style={{ color: "#3B71CA" }}></i>
                                 <i className="fa-solid fa-circle-stop fa-xl  mx-2 my-2 micicon" onClick={stopListen} style={{ color: "#DC4C64" }}></i>
                                 <div className='d-flex align-items-center'>
-                                    {listening && <i class="fa-solid fa-microphone fa-fade fa-xl" style={{ color: "#bf1212" }}></i>}
+                                    {listening && <i className="fa-solid fa-microphone fa-fade fa-xl" style={{ color: "#bf1212" }}></i>}
                                     {listening && <p className='h5 mx-2 mt-2'>listening....</p>}
                                 </div>
                             </div>
                         </div>
-                        <input className="form-control w-50" id="description" type="text" name="description" placeholder="description" style={{ height: "5rem" }} data-sb-validations="required" value={note.description || transcript} onChange={onchange}></input>
-                        <div className="invalid-feedback" data-sb-feedback="description:required">Description is required.</div>
+                        <textarea className="form-control w-50" rows="6" id="description" name="description" placeholder="Enter description here......" value={note.description || transcript} onChange={onchange}></textarea>
+                        {/* <input className="form-control w-50" id="description" type="text" name="description" placeholder="description" style={{ height: "5rem" }} data-sb-validations="required" value={note.description || transcript} onChange={onchange}></input> */}
                     </div>
 
                     <div className="mb-3">
