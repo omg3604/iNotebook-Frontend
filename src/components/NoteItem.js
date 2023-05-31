@@ -76,8 +76,8 @@ export default function NoteItem(props) {
                 </div>
                 <div className="card-footer text-muted">
                     {days_difference >= 0 &&
-                        <div className="timer mb-2" style={{ color: "#367E18" }}><strong> {days_difference} days left </strong>
-                            <i className="fa-sharp fa-solid fa-clock fa-xl" style={{ color: "#367E18" }}> </i>
+                        <div className="timer mb-2" style={{ color: "#19376D" }}><strong> {days_difference} days left </strong>
+                            <i className="fa-sharp fa-solid fa-clock fa-xl" style={{ color: "#19376D" }}> </i>
                         </div>
                     }
                     { days_difference<0 &&  
