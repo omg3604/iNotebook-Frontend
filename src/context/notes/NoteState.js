@@ -132,8 +132,36 @@ const NoteState = (props) => {
         console.log(json);
     }
 
+    // Save a shared note
+    const saveSharedNote = async (title, description, tag , expdate , email) => {
+        setnoteLoad(true);
+        const response1 = await fetch(`${host}/api/auth/finduser` , {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": localStorage.getItem('token')
+            },
+            body : JSON.stringify({email})
+        })
+        const json = await response1.json();
+        const authtoken = json.authToken;
+        console.log(authtoken);
+
+        const response = await fetch(`${host}/api/notes/addSharedNote`, {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": authtoken,
+            },
+            body: JSON.stringify({title , description , tag , expdate}), // body data type must match "Content-Type" header
+        });
+        const newnote = await response.json();
+        console.log(newnote);
+        setnoteLoad(false);
+    }
+
     return (
-        <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote , getNotes , getNotesByTag , deleteAllNotes , noteLoad}}> 
+        <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote , getNotes , getNotesByTag , deleteAllNotes , saveSharedNote , noteLoad}}> 
             {props.children}
         </NoteContext.Provider>
     )

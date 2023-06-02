@@ -21,7 +21,7 @@ export default function Notes(props) {
 
     const context = useContext(noteContext);
     let navigate = useNavigate();
-    const { notes, getNotes, editNote, getNotesByTag, noteLoad } = context;
+    const { notes, getNotes, editNote, getNotesByTag, noteLoad , saveSharedNote} = context;
 
     // to display all saved notes of the user.
     useEffect(() => {
@@ -78,9 +78,11 @@ export default function Notes(props) {
     }
 
     const onshareclick = (e) => {
-        console.log(usermail);
-        console.log(snote);
+        saveSharedNote(snote.stitle , snote.sdescription , snote.stag , snote.sexpdate , usermail);
+        // console.log(usermail);
+        // console.log(snote);
         refClose.current.click();
+        props.showAlert("success", `Note shared to user ${usermail} successfully`);
     }
 
     // if (noteLoad) return <Spinner/>;
@@ -173,6 +175,7 @@ export default function Notes(props) {
                             <option value="General">General</option>
                             <option value="Personal">Personal</option>
                             <option value="Business">Business</option>
+                            <option value="shared">Shared</option>
                         </select>
                     </div>
                 </div>
