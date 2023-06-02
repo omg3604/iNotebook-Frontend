@@ -110,7 +110,7 @@ export default function Notes(props) {
                                 </form>
                             </div>
                         }
-                        {window == "share" && 
+                        {window == "share" &&
                             <div className="modal-footer" >
                                 <button ref={refClose} type="button" className='btn btn-rounded editbtncss' data-bs-dismiss="modal">Close</button>
                                 <button onClick={onshareclick} type="button" className='btn btn-rounded editbtncss'>Share</button>
@@ -127,9 +127,23 @@ export default function Notes(props) {
                                         <label htmlFor="edescription" className="form-label">Description</label>
                                         <input type="text" className="form-control w-75" id="edescription" name="edescription" placeholder="Note description" onChange={onchange} value={note.edescription} minLength={5} required />
                                     </div>
+                                    <div className="mb-3">
+                                        <div className='d-flex justify-content-between align-items-center'>
+
+                                        </div>
+                                    </div>
+
                                     <div className="form-group d-flex my-3 justify-content-around">
-                                        <label htmlFor="etag" className="form-label">Tag</label>
-                                        <input type="text" className="form-control w-50" id="etag" name="etag" placeholder="Note tag" onChange={onchange} value={note.etag} />
+                                        <p className='form-label'>Select Tag : </p>
+                                        <select id="etag" className="select w-50 p-2 rounded" style={{ borderColor: "grey" }} name="etag" onChange={onchange} value={note.etag}>
+                                            <option value="personal">Personal</option>
+                                            <option value="general">General</option>
+                                            <option value="business">Business</option>
+                                            <option value="routine">Routine</option>
+                                            <option value="routine">Default</option>
+                                        </select>
+                                        {/* <label htmlFor="etag" className="form-label">Tag</label>
+                                        <input type="text" className="form-control w-50" id="etag" name="etag" placeholder="Note tag" onChange={onchange} /> */}
                                     </div>
                                     {/* <div className="form-group d-flex my-3 justify-content-around">
                                         <label htmlFor="eexpdate" className="form-label">Expiry Date</label>
@@ -138,7 +152,7 @@ export default function Notes(props) {
                                 </form>
                             </div>
                         }
-                        { window == "edit" && 
+                        {window == "edit" &&
                             <div className="modal-footer" >
                                 <button ref={refClose} type="button" className='btn btn-rounded editbtncss' data-bs-dismiss="modal">Close</button>
                                 <button onClick={handleClick} type="button" className='btn btn-rounded editbtncss'>Save changes</button>

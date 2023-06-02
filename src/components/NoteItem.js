@@ -72,10 +72,10 @@ export default function NoteItem(props) {
                     <strong>Creation </strong>: {addday} - {addmonth} - {addyear}
                 </div>
                 <div className="card-footer text-muted">
-                    <strong>Expiry </strong>: {expday} - {expmonth} - {expyear}
+                    <strong>Deadline </strong>: {expday} - {expmonth} - {expyear}
                 </div>
                 <div className="card-footer text-muted">
-                    {days_difference >= 0 &&
+                    {days_difference >= 0 && days_difference <= 7 &&
                         <div className="timer mb-2" style={{ color: "#19376D" }}><strong> {days_difference} days left </strong>
                             <i className="fa-sharp fa-solid fa-clock fa-xl" style={{ color: "#19376D" }}> </i>
                         </div>
