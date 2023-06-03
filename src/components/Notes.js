@@ -11,9 +11,9 @@ import './Notes.css'
 export default function Notes(props) {
 
 
-    // For maintaining the user data on the navbar upon reload also.
+    // For maintaining the user data on the navbar upon reload also
     const Ucontext = useContext(userContext);
-    const { getUserDetails } = Ucontext;
+    const { getUserDetails, details} = Ucontext;
     useEffect(() => {
         getUserDetails(localStorage.getItem('token'));
     }, [])
@@ -21,7 +21,7 @@ export default function Notes(props) {
 
     const context = useContext(noteContext);
     let navigate = useNavigate();
-    const { notes, getNotes, editNote, getNotesByTag, noteLoad , saveSharedNote} = context;
+    const { notes, getNotes, editNote, getNotesByTag, noteLoad, saveSharedNote } = context;
 
     // to display all saved notes of the user.
     useEffect(() => {
@@ -78,7 +78,7 @@ export default function Notes(props) {
     }
 
     const onshareclick = (e) => {
-        saveSharedNote(snote.stitle , snote.sdescription , snote.stag , snote.sexpdate , usermail);
+        saveSharedNote(snote.stitle + `    ~"${details.name}"` , snote.sdescription, snote.stag, snote.sexpdate, usermail);
         // console.log(usermail);
         // console.log(snote);
         refClose.current.click();
