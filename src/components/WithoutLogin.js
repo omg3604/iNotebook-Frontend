@@ -23,6 +23,7 @@ const WithoutLogin = () => {
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
@@ -57,6 +58,17 @@ const WithoutLogin = () => {
                 <h3 className='text-center'>Share with Anyone</h3>
                 <div className='d-none d-md-block'>
                   <p>Share your notes with anywhere and from anywhere on the Application</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <div className="col-md-4 rotate d-block">
+              <div className="feature-box d-flex flex-column align-items-center">
+                <i className="fa-sharp fa-solid fa-clock fa-3x my-2"></i>         
+                <h3 className='text-center'>Mark the Deadlines</h3>
+                <div className='d-none d-md-block'>
+                  <p>Save notes with deadline to remind later about the task</p>
                 </div>
               </div>
             </div>

@@ -73,12 +73,21 @@ export default function Notes(props) {
         setsnote({ id: note._id, stitle: note.title, sdescription: note.description, stag: note.tag, sexpdate: note.expdate });
     }
 
+    const [validmail, setvalidmail] = useState(true);
+
     const onsharechange = (e) => {
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if(e.target.value.match(validRegex)){
+            setvalidmail(true);
+        }
+        else{
+            setvalidmail(false);
+        }
         setusermail(e.target.value);
     }
 
     const onshareclick = (e) => {
-        saveSharedNote(snote.stitle + `    ~"${details.name}"` , snote.sdescription, snote.stag, snote.sexpdate, usermail);
+        saveSharedNote(snote.stitle + `    ~${details.name}` , snote.sdescription, snote.stag, snote.sexpdate, usermail);
         // console.log(usermail);
         // console.log(snote);
         refClose.current.click();
@@ -109,13 +118,14 @@ export default function Notes(props) {
                                         <input type="text" className="form-control" id="etitle" name="etitle" placeholder="Enter email" onChange={onsharechange} value={usermail} minLength={5} required />
                                     </div>
                                     <p>The email must be a valid email of inotebook user.</p>
+                                    {!validmail && <p className='p-2 rounded' style={{backgroundColor: "#FA9884"}}>Please Enter a valid email.</p>}
                                 </form>
                             </div>
                         }
                         {window == "share" &&
                             <div className="modal-footer" >
                                 <button ref={refClose} type="button" className='btn btn-rounded editbtncss' data-bs-dismiss="modal">Close</button>
-                                <button onClick={onshareclick} type="button" className='btn btn-rounded editbtncss'>Share</button>
+                                <button onClick={onshareclick} type="button" className={`btn btn-rounded editbtncss ${validmail===false? "disabled": ""}`}>Share</button>
                             </div>
                         }
                         {window == "edit" &&

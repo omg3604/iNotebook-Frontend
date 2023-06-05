@@ -134,7 +134,6 @@ const NoteState = (props) => {
 
     // Save a shared note
     const saveSharedNote = async (title, description, tag , expdate , email) => {
-        setnoteLoad(true);
         const response1 = await fetch(`${host}/api/auth/finduser` , {
             method: "POST",
             headers: {
@@ -157,7 +156,6 @@ const NoteState = (props) => {
         });
         const newnote = await response.json();
         console.log(newnote);
-        setnoteLoad(false);
     }
 
     return (
