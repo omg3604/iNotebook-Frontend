@@ -45,10 +45,16 @@ const Login = (props) => {
 
         const json = await response.json();
         console.log(json);
-
-        if (json.success === true) {
-            // Login Successful , Save the auth toekn and Redirect to Home page
-            // alert("Logged in Successfully");
+        if (json.status === "PENDING") {
+            const userId = json.data.userId;
+            localStorage.setItem('userid' , userId);
+            localStorage.setItem('usermail' , credentials.email);
+            console.log(json);
+            console.log(userId);
+            navigate("/VerifyAccount");
+            props.showAlert("success", "An otp has been sent to the given email.");
+        }
+        else if(json.status == "SUCCESS"){
             console.log(json.authToken);
             localStorage.setItem('token', json.authToken);
             console.log("the auth token is : ", localStorage.getItem('token'));
@@ -57,11 +63,9 @@ const Login = (props) => {
             getUserDetails(localStorage.getItem('token')); // for updating user name on the namvbar and account section
         }
         else {
-            // Login Unsuccessfull
-            // alert("Invalid Credentials , Login Unsuccessfull.");
-            props.showAlert("warning", json.error);
+            //console.log(json);
+            props.showAlert("warning", json.message);
         }
-
         setuserLoad(false);
         setCredentials({ email: "", password: "" });
         // setEmail("");

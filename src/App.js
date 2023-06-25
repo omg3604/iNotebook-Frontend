@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Account from './components/Account';
 import About from './components/About';
+import VerifyAccount from './components/VerifyAccount';
 import {
   BrowserRouter as Router,
   Routes,
@@ -48,6 +49,7 @@ function App() {
                 <Route exact path='/Login' element={<Login showAlert={showAlert}></Login>}></Route>
                 <Route exact path='/Signup' element={<Signup showAlert={showAlert}></Signup>}></Route>
                 <Route exact path='/Account' element={<Account showAlert={showAlert}></Account>}></Route>
+                <Route exact path='/VerifyAccount' element={<VerifyAccount showAlert={showAlert}></VerifyAccount>}></Route>
               </Routes>
             </div>
             <Footer></Footer>

@@ -65,7 +65,7 @@ const WithoutLogin = () => {
           <div className="carousel-item">
             <div className="col-md-4 rotate d-block">
               <div className="feature-box d-flex flex-column align-items-center">
-                <i className="fa-sharp fa-solid fa-clock fa-3x my-2"></i>         
+                <i className="fa-sharp fa-solid fa-clock fa-3x my-2"></i>
                 <h3 className='text-center'>Mark the Deadlines</h3>
                 <div className='d-none d-md-block'>
                   <p>Save notes with deadline to remind later about the task</p>
@@ -112,10 +112,10 @@ const WithoutLogin = () => {
         </div>
       </section> */}
 
-      <div className='my-5'>
-        <hr></hr>
-      </div>
-    </div>
+  <div className='my-5'>
+    <hr></hr>
+  </div>
+    </div >
   )
 }
 
