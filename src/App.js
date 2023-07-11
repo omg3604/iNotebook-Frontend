@@ -18,6 +18,8 @@ import NoteState from './context/notes/NoteState';
 import UserState from './context/user/UserState';
 import Alert from './components/Alert';
 import Footer from './components/Footer';
+import ResetPassword from './components/ResetPassword';
+import ForgetPassword from './components/ForgetPassword';
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -50,6 +52,8 @@ function App() {
                 <Route exact path='/Signup' element={<Signup showAlert={showAlert}></Signup>}></Route>
                 <Route exact path='/Account' element={<Account showAlert={showAlert}></Account>}></Route>
                 <Route exact path='/VerifyAccount' element={<VerifyAccount showAlert={showAlert}></VerifyAccount>}></Route>
+                <Route exact path='/ResetPassword' element={<ResetPassword showAlert={showAlert}></ResetPassword>}></Route>
+                <Route exact path='/ForgetPassword' element={<ForgetPassword showAlert={showAlert}></ForgetPassword>}></Route>
               </Routes>
             </div>
             <Footer></Footer>

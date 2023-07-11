@@ -117,7 +117,7 @@ const Login = (props) => {
                                                         </div>
                                                         <hr/>
                                                             <Link className="link float-start linkstyle" to="/SignUp">New User? Create Account!</Link>
-                                                            <Link className="link float-end linkstyle" to="/">Forgot password?</Link>
+                                                            <Link className="link float-end linkstyle" to="/ForgetPassword">Forgot password?</Link>
                                                     </form>
                                                 </div>
                                             </div>
