@@ -73,15 +73,17 @@ function ResetPassword(props) {
                 <div className="card-body d-flex flex-column align-items-center">
                     <p className="info text-center"></p>
                     <h6>UserName : <strong>{usermail}</strong></h6>
-                    
+
                     <h6 className="card-subtitle m-2 text-muted text-center">Please enter a minimum of 5 charcaters long and valid password.</h6>
 
                     <form onSubmit={onPassSubmit} className='d-flex flex-column align-items-center'>
                         <div className="form-group pt-3 mb-2">
+                            <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                             <label htmlFor='otp' className='text-muted'> Enter new Password</label>
                             <input type="password" className="form-control" id="otp" name="otp" placeholder="" onChange={onPassChange} required />
                         </div>
                         <div className="form-group pb-3">
+                            <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                             <label htmlFor='cotp' className='text-muted'>Confirm new Password</label>
                             <input type="password" className="form-control" id="cotp" name="cotp" placeholder="" onChange={onCPassChange} required />
                         </div>

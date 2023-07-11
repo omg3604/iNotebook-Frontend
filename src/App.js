@@ -20,6 +20,7 @@ import Alert from './components/Alert';
 import Footer from './components/Footer';
 import ResetPassword from './components/ResetPassword';
 import ForgetPassword from './components/ForgetPassword';
+import SavedNotes from './components/SavedNotes';
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -54,6 +55,7 @@ function App() {
                 <Route exact path='/VerifyAccount' element={<VerifyAccount showAlert={showAlert}></VerifyAccount>}></Route>
                 <Route exact path='/ResetPassword' element={<ResetPassword showAlert={showAlert}></ResetPassword>}></Route>
                 <Route exact path='/ForgetPassword' element={<ForgetPassword showAlert={showAlert}></ForgetPassword>}></Route>
+                <Route exact path='/SavedNotes' element={<SavedNotes showAlert={showAlert}></SavedNotes>}></Route>
               </Routes>
             </div>
             <Footer></Footer>

@@ -81,7 +81,8 @@ const VerifyAccount = (props) => {
                         <h6 className="card-subtitle m-2 text-muted text-center">Please enter OTP to verify your email account.</h6>
 
                         <form onSubmit={onOTPsubmit} className='d-flex flex-column align-items-center'>
-                            <div className="form-group py-3">
+                            <div className="form-group py-3 d-flex align-items-center">
+                                <i className="fa fa-key mx-2" aria-hidden="true"></i>
                                 <input type="number" className="form-control" id="otp" placeholder="" onChange={onOTPchange} />
                             </div>
                             <button type="submit" className="btn btn-sm otpsubmitbtn">Verify OTP</button>

@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../context/user/userContext';
 import Spinner from './Spinner';
+import { Link } from 'react-router-dom';
 import './Signup.css'
 
 const Signup = (props) => {
@@ -30,12 +31,12 @@ const Signup = (props) => {
             },
             body: JSON.stringify({ name, email, password }), // body data type must match "Content-Type" header
         });
-        
+
         const json = await response.json();
         if (json.status === "PENDING") {
             const userId = json.data.userId;
-            localStorage.setItem('userid' , userId);
-            localStorage.setItem('usermail' , email);
+            localStorage.setItem('userid', userId);
+            localStorage.setItem('usermail', email);
             console.log(json);
             console.log(userId);
             navigate("/VerifyAccount");
@@ -102,7 +103,9 @@ const Signup = (props) => {
                                         <button type="submit" className='btn btn-primary mx-2 btn-rounded signbtn'>Submit</button>
                                     </div>
                                 </form>
-
+                                <div className='d-flex justify-content-center'>
+                                    <Link className="link float-start linkstyle text-center" to="/Login">Already a User? Login into Account!</Link>
+                                </div>
                             </div>
                             <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 

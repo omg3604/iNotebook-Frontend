@@ -76,6 +76,7 @@ function ForgetPassword(props) {
 
                     <form onSubmit={onemailSubmit} className='d-flex flex-column align-items-center'>
                         <div className="form-group pt-3 mb-3">
+                            <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                             <label htmlFor='otp' className='text-muted'> Enter Email</label>
                             <input type="text" className="form-control" style={{ width: "20rem" }} id="otp" name="otp" placeholder="" onChange={onemailChange} required />
                         </div>
