@@ -36,7 +36,7 @@ const NavBar = (props) => {
                                 </Link>
                             </li>
                             <li className="nav-item mx-2">
-                                <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""} linkcss`} to="/about"> <i className="fa-solid fa-circle-info"></i> About Us</Link>
+                                <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""} linkcss`} to="/about"> <i className="fa-solid fa-circle-info"></i> About</Link>
                             </li>
                             {localStorage.getItem('token') && <li className="nav-item mx-2">
                                 <Link className={`nav-link ${location.pathname === "/SavedNotes" ? "active" : ""} linkcss`} to="/SavedNotes"> <i className="fa-solid fa-floppy-disk"></i> Saved Notes</Link>

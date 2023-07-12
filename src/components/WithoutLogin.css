@@ -39,7 +39,7 @@ i{
 }
 
 .firstSec{
-    background-image: url('../HomeDesktop.png');
+    background-image: url('../images/HomeDesktop.png');
   
     /* Image is centered vertically and horizontally at all times */
     background-position: center center;
@@ -64,7 +64,7 @@ i{
     .firstSec {
       /* The file size of this background image is 93% smaller
        * to improve page load speed on mobile internet connections */
-      background-image: url('../HomeMobile.png');
+      background-image: url('../images/HomeMobile.png');
       padding: 0px;
     }
 
