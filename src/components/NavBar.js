@@ -41,6 +41,9 @@ const NavBar = (props) => {
                             {localStorage.getItem('token') && <li className="nav-item mx-2">
                                 <Link className={`nav-link ${location.pathname === "/SavedNotes" ? "active" : ""} linkcss`} to="/SavedNotes"> <i className="fa-solid fa-floppy-disk"></i> Saved Notes</Link>
                             </li>}
+                            {localStorage.getItem('token') && <li className="nav-item mx-2">
+                                <Link className={`nav-link ${location.pathname === "/SharedNotes" ? "active" : ""} linkcss`} to="/SharedNotes"> <i className="fa-solid fa-share"></i> Shared Notes</Link>
+                            </li>}
                             <li className="nav-item mx-2">
                                 <Link className={`nav-link ${location.pathname === "/contact" ? "active" : ""} linkcss`} to="/contact"> <i className="fa-solid fa-phone-volume"></i> Contact Us</Link>
                             </li>
@@ -58,8 +61,9 @@ const NavBar = (props) => {
                                     </button>
                                     <div className="dropdown-menu dropdown-menu-end">
                                         <Link className="dropdown-item" aria-current="page" to="/Account">My Account</Link>
-                                        <Link className="dropdown-item" to="/SavedNotes">My Saved Notes</Link>
                                         <Link className="dropdown-item" to="/">Add a Note</Link>
+                                        <Link className="dropdown-item" to="/SavedNotes">Saved Notes</Link>
+                                        <Link className="dropdown-item" to="/SharedNotes">Shared Notes</Link>
                                         <div className="dropdown-divider"></div>
                                         <Link className='btn btn-primary mx-2 btn-rounded navbtn' style={{ backgroundColor: "#19376D", borderColor: "#19376D" }} to="/Login" role='button' onClick={handleLogout}> Log out </Link>
                                     </div>
