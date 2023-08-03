@@ -3,7 +3,7 @@ import { useState } from "react";
 import UserContext from "./userContext";
 
 const UserState = (props) => {
-    const host = "https://odd-mite-shoe.cyclic.app";
+    const host = "https://comfortable-crab-toga.cyclic.cloud";
     const [details, setDetails] = useState({_id:"" , name:"" , email:"" , date:""})
 
     const [userLoad , setuserLoad] = useState(false);

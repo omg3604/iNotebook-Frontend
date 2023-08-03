@@ -107,7 +107,7 @@ function SavedNotes(props) {
             const authtoken = json.authToken;
             console.log(authtoken);
 
-            const response = await fetch(`https://odd-mite-shoe.cyclic.app/api/notes/addSharedNote`, {
+            const response = await fetch(`https://comfortable-crab-toga.cyclic.cloud/api/notes/addSharedNote`, {
                 method: "POST", // *GET, POST, PUT, DELETE, etc.
                 headers: {
                     "Content-Type": "application/json",

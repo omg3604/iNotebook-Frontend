@@ -24,7 +24,7 @@ const Signup = (props) => {
         setuserLoad(true);
         // API Call
         const { name, email, password } = credentials;
-        const response = await fetch(`https://odd-mite-shoe.cyclic.app/api/auth/createuser`, {
+        const response = await fetch(`https://comfortable-crab-toga.cyclic.cloud/api/auth/createuser`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",
@@ -37,8 +37,8 @@ const Signup = (props) => {
             const userId = json.data.userId;
             localStorage.setItem('userid', userId);
             localStorage.setItem('usermail', email);
-            console.log(json);
-            console.log(userId);
+            // console.log(json);
+            // console.log(userId);
             navigate("/VerifyAccount");
             props.showAlert("success", "An otp has been sent to the given email.");
         }

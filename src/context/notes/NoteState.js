@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 
 const NoteState = (props) => {
-    const host = "https://odd-mite-shoe.cyclic.app";
+    const host = "https://comfortable-crab-toga.cyclic.cloud";
     const notesInitial = [];
 
     const [notes, setNotes] = useState(notesInitial);
