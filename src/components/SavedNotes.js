@@ -93,7 +93,7 @@ function SavedNotes(props) {
         let tag = snote.stag;
         let expdate = snote.sexpdate;
         let email = usermail;
-        const response1 = await fetch(`https://odd-mite-shoe.cyclic.app/api/auth/finduser`, {
+        const response1 = await fetch(`https://frightened-gold-beret.cyclic.app/api/auth/finduser`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -107,7 +107,7 @@ function SavedNotes(props) {
             const authtoken = json.authToken;
             console.log(authtoken);
 
-            const response = await fetch(`https://comfortable-crab-toga.cyclic.cloud/api/notes/addSharedNote`, {
+            const response = await fetch(`https://frightened-gold-beret.cyclic.app/api/notes/addSharedNote`, {
                 method: "POST", // *GET, POST, PUT, DELETE, etc.
                 headers: {
                     "Content-Type": "application/json",

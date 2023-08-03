@@ -19,7 +19,7 @@ function ForgetPassword(props) {
         e.preventDefault();
         setuserLoad(true);
         // API Call
-        const response = await fetch(`https://comfortable-crab-toga.cyclic.cloud/api/auth/forgetpassword`, {
+        const response = await fetch(`https://frightened-gold-beret.cyclic.app/api/auth/forgetpassword`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",

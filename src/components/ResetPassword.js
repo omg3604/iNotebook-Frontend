@@ -20,7 +20,7 @@ function ResetPassword(props) {
         e.preventDefault();
         setuserLoad(true);
         // console.log(usermail);
-        const response = await fetch(`https://comfortable-crab-toga.cyclic.cloud/api/auth/resetpassword`, {
+        const response = await fetch(`https://frightened-gold-beret.cyclic.app/api/auth/resetpassword`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",

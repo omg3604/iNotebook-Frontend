@@ -24,7 +24,7 @@ const Signup = (props) => {
         setuserLoad(true);
         // API Call
         const { name, email, password } = credentials;
-        const response = await fetch(`https://comfortable-crab-toga.cyclic.cloud/api/auth/createuser`, {
+        const response = await fetch(`https://frightened-gold-beret.cyclic.app/api/auth/createuser`, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             headers: {
                 "Content-Type": "application/json",
